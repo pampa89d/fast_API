@@ -8,7 +8,7 @@ tab1, tab2, tab3 = st.tabs(['Image', 'Text', 'Table'])
 def main():
     with tab1:
         # create input form
-        image = st.file_uploader("Classify an image", type=['jpg', 'jpeg'])
+        image = st.file_uploader("Classification of skin cancers", type=['jpg', 'jpeg'])
         if st.button("Classify image") and image is not None:
             # show image
             st.image(image)
@@ -20,7 +20,7 @@ def main():
             st.write(f'Class name: {res["class_name"]}, class index: {res["class_index"]}')
 
     with tab2:
-        txt = st.text_input('Classify text')
+        txt = st.text_input('Classify toxicity test')
         if st.button('Classify text'):
             text = {'text' : txt}
             res = requests.post("http://51.250.98.12:8000/clf_text", json=text)
@@ -34,7 +34,7 @@ def main():
                 st.text(res.text) # Показываем текст ошибки, если что-то пошло не так
 
     with tab3: 
-        st.write("Classify table data")
+        st.write("Classify table data (test function)")
         with st.form("query_form"):
             # collect feature values
             feature1 = st.text_input("Input value 1", value="0.")
