@@ -20,7 +20,7 @@ def main():
             st.write(f'Class name: {res["class_name"]}, class index: {res["class_index"]}')
 
     with tab2:
-        txt = st.text_input('Classify toxicity test')
+        txt = st.text_input('Classify toxicity text')
         if st.button('Classify text'):
             text = {'text' : txt}
             res = requests.post("http://51.250.98.12:8000/clf_text", json=text)
