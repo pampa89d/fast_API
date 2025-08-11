@@ -15,7 +15,7 @@ def main():
             # format data for input format
             files = {"file": image.getvalue()}
             # send data and get the result
-            res = requests.post("http://127.0.0.1:8000/clf_image", files=files).json()
+            res = requests.post("http://51.250.98.12:8000/clf_image", files=files).json()
             # print results
             st.write(f'Class name: {res["class_name"]}, class index: {res["class_index"]}')
 
@@ -23,7 +23,7 @@ def main():
         txt = st.text_input('Classify text')
         if st.button('Classify text'):
             text = {'text' : txt}
-            res = requests.post("http://127.0.0.1:8000/clf_text", json=text)
+            res = requests.post("http://51.250.98.12:8000/clf_text", json=text)
             # Сначала проверяем, что запрос прошел успешно
             if res.status_code == 200:
                 data = res.json()
@@ -45,7 +45,7 @@ def main():
                 # convert to input format
                 vector = {'feature1' : feature1, 'feature2' : feature2}
                 # send data and get the result
-                res = requests.post("http://127.0.0.1:8000/clf_table", json=vector)
+                res = requests.post("http://51.250.98.12:8000/clf_table", json=vector)
                 # print feature values and result
                 st.write("feature1", feature1, "feature2", feature2)
                 st.write(f"Predicted class is {res.json()['prediction']}")
